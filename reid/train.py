@@ -111,7 +111,7 @@ def main(total_epoch):
         total_train_err.append(train_err)
   
 if __name__ == '__main__':
-    #total_epoch = 10
-    #main(total_epoch)
+    total_epoch = 10
+    main(total_epoch)
     shutil.copy2('./checkpoint/osnet_x0_25_cmot-10.pt', '../MOT_StrongSORT_box/weights/osnet_x0_25_cmot-10.pt')
     
