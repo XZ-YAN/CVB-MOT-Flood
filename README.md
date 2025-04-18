@@ -20,5 +20,5 @@ The visualization results are in the test/ directory.
 * The CMOT dataset is licensed under a [Creative Commons Attribution-NonCommercial 4.0 International License](http://creativecommons.org/licenses/by-nc/4.0/) to promote the open use of the dataset and future improvements.
 * Without permission, the CMOT dataset should only be used for non-commercial scientific research purposes.  
 
-## Citing the CMOT Dataset
+## Citing this repo
 To be updated.
