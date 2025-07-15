@@ -3,7 +3,7 @@
 Intelligent flood scene understanding using computer vision-based multi-object tracking. To run the code, please download [output](https://pan.baidu.com/s/1Sg8I6djm2LRCZGy98zt9eg?pwd=gnji) folder and put it into the root directory.    
 
 ## Optical Flow Tracking
-The optical flow tracking algorithm is in MOT_KLT_mask/KLT_Mask.py. We developed this algorithm as an independent function that can be integrated into any tracking-by-detection model.
+The optical flow tracking algorithm is in MOT_KLT/KLT_Mask.py. We developed this algorithm as an independent function that can be integrated into any tracking-by-detection model.
 
 ## Occlusion Handling Network
 The structure of the Occlusion handling netowrk is in reid/model.py.  
