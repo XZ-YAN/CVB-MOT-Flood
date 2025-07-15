@@ -1,5 +1,4 @@
 # coding=UTF-8
-# Code Author: Xuzhong Yan
 import sys, argparse, os, platform, shutil, time, cv2, glob, math, turtle, random, warnings, logging, matplotlib
 import numpy as np
 from pathlib import Path
@@ -33,19 +32,19 @@ from detectron2.utils.logger import setup_logger
 setup_logger()
 from detectron2.data import DatasetCatalog, MetadataCatalog
 from detectron2.data.datasets import register_coco_instances
-from MOT_StrongSORT_box.models.common import DetectMultiBackend
-from MOT_StrongSORT_box.models.utils.dataloaders import VID_FORMATS, LoadImages, LoadStreams
-from MOT_StrongSORT_box.models.utils.general import (LOGGER, check_img_size, non_max_suppression, scale_coords, check_requirements, cv2,
+from MOT_Association.models.common import DetectMultiBackend
+from MOT_Association.models.utils.dataloaders import VID_FORMATS, LoadImages, LoadStreams
+from MOT_Association.models.utils.general import (LOGGER, check_img_size, non_max_suppression, scale_coords, check_requirements, cv2,
                                                      check_imshow, xyxy2xywh, increment_path, strip_optimizer, colorstr, print_args, check_file)
-from MOT_StrongSORT_box.models.utils.torch_utils import select_device, time_sync
-from MOT_StrongSORT_box.models.utils.plots import Annotator, colors, save_one_box
-from MOT_StrongSORT_box.strong_sort.utils.parser import get_config
-from MOT_StrongSORT_box.strong_sort.strong_sort import StrongSORT
+from MOT_Association.models.utils.torch_utils import select_device, time_sync
+from MOT_Association.models.utils.plots import Annotator, colors, save_one_box
+from MOT_Association.strong_sort.utils.parser import get_config
+from MOT_Association.strong_sort.strong_sort import StrongSORT
 import functools
 functools.lru_cache()
 ''' import KLT '''
-from MOT_KLT_mask.KLT_Mask import KLT
-import MOT_KLT_mask.KLT_Mask as KLT_Mask
+from MOT_KLT.KLT import KLT
+import MOT_KLT.KLT as KLT_Mask
 
 # limit the number of cpus used by high performance libraries
 os.environ["OMP_NUM_THREADS"] = "1"
@@ -91,8 +90,8 @@ def detect(video, subset, config, weight_path, label):
     device ='0'
     device = select_device(device)
     
-    strong_sort_weights='./MOT_StrongSORT_box/weights/osnet_x0_25_cmot-10.pt'
-    config_strongsort='./MOT_StrongSORT_box/strong_sort/configs/strong_sort.yaml'
+    strong_sort_weights='./MOT_Association/weights/osnet_x0_25_cmot-10.pt'
+    config_strongsort='./MOT_Association/strong_sort/configs/strong_sort.yaml'
     cfg = get_config()
     cfg.merge_from_file(config_strongsort)
     strongsort = StrongSORT(strong_sort_weights,
@@ -243,17 +242,17 @@ def detect(video, subset, config, weight_path, label):
                 
 if __name__ == "__main__":
     
-    # Mask-RCNN + ResNet101 + FPN:
+    # MaskRCNN 
     #label = 'Mask_RCNN_101'
     #config = 'COCO-InstanceSegmentation/mask_rcnn_R_101_FPN_3x.yaml'
     #weight_path = 'output/MaskRCNN'
 
-    # Maks-RCNN + ResNet50 + Deformable Conv
+    # DeformCNN
     #label = 'Deformable_Mask_RCNN'
     #config = 'Misc/mask_rcnn_R_50_FPN_3x_dconv_c3-c5.yaml'
     #weight_path = 'output/DeformCNN'
 
-    # Cascade Maks-RCNN + ResNet50 + FPN
+    # CascadeRCNN
     label = 'Cascade_Mask_RCNN'
     config = 'Misc/cascade_mask_rcnn_R_50_FPN_3x.yaml'
     weight_path = 'output/CascadeRCNN'
