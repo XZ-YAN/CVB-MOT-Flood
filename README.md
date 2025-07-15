@@ -20,4 +20,4 @@ The visualization results are in the test/ directory.
 * Without permission, this repo should only be used for non-commercial scientific research purposes.  
 
 ## Citing this repo
-To be updated.
+Xuzhong Yan, Yiqiao Zhu, Zeli Wang, Bin Xu, Liu He, and Rong Xia. 2025. Intelligent Flood Scene Understanding Using Computer Vision-Based Multi-Object Tracking. Water. Accepted.
