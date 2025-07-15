@@ -13,7 +13,6 @@ To train this model, please run:
 ## Multi-object Tracking
 To test the trackers on videos, please run:  
   `$ python tracker.py`  
-  `$ python tracker_StrongSORT.py`  
 The visualization results are in the test/ directory.
 
 ## License
